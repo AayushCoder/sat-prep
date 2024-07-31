@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Question Filter</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <script type="module" src="app.js" defer></script>
+        <style>
+            body {
+                
+                background-image: url('background.png');
+                background-size: cover;
+                background-repeat: repeat;
+                background-color: lightskyblue;
+                background-position: center;
+            }
+            .container {
+                margin-top: 1%;
+                vertical-align: auto;
+                background: rgba(255, 255, 255, .5); /* Semi-transparent */
+                backdrop-filter: blur(50px); /* Blur effect */
+            }
+            .question-box {
+                border: 1px solid #ddd;
+                background: linear-gradient(145deg, #ffffff, #f1f1f1);
+                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.5);
+            }
+            .choice-btn {
+                border-radius: 8px;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+            .choice-btn:hover {
+                background-color: #e0e0e0;
+                transform: translateY(-2px);
+            }
+            .choice-btn:active {
+                background-color: #d0d0d0;
+                transform: translateY(1px);
+            }
+            .button-primary {
+                background: linear-gradient(145deg, #5fa3f0, #3b82f6);
+                color: white;
+            }
+            .button-primary:hover {
+                background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+            }
+            .button-secondary {
+                background: linear-gradient(145deg, #6eb2f7, #5fa3f0);
+                color: white;
+            }
+            .button-secondary:hover {
+                background: linear-gradient(145deg, #5fa3f0, #3b82f6);
+            }
+            .button-tertiary {
+                background: linear-gradient(145deg, #92caff, #6eb2f7);
+                color: white;
+            }
+            .button-tertiary:hover {
+                background: linear-gradient(145deg, #6eb2f7, #5fa3f0);
+            }
+            .button-danger {
+                background: linear-gradient(145deg, #d9534f, #c9302c);
+                color: white;
+            }
+            .button-danger:hover {
+                background: linear-gradient(145deg, #c9302c, #a32722);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container mx-auto p-6 rounded-lg shadow-lg">
+            <div class="mb-6">
+                <label
+                    for="typeSelect"
+                    class="block text-lg font-medium text-gray-800"
+                    >Question Type</label
+                >
+                <select disabled
+                    id="typeSelect"
+                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    style="-webkit-appearance: none;"
+                    
+                    >
+                    <option value="Reading and Writing">Reading and Writing</option>
+                    
+                </select>
+            </div>
+            <div class="mb-6">
+                <label
+                    for="difficultySelect"
+                    class="block text-lg font-medium text-gray-800"
+                    >Difficulty</label
+                >
+                <select
+                    id="difficultySelect"
+                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                >
+                    <option value="">All</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label
+                    for="domainSelect"
+                    class="block text-lg font-medium text-gray-800"
+                    >Domain</label
+                >
+                <select
+                    id="domainSelect"
+                    class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                >
+                    <option value="">All</option>
+                    <option value="Information and Ideas">Information and Ideas</option>
+                    <option value="Craft and Structure">Craft and Structure</option>
+                    <option value="Expression of Ideas">Expression of Ideas</option>
+                    <option value="Standard English Conventions">Standard English Conventions</option>
+                </select>
+            </div>
+            <div class="flex space-x-4 mb-6">
+                <button
+                    id="filterBtn"
+                    class="button-primary px-4 py-2 rounded shadow-md transition duration-300"
+                >
+                    Filter
+                </button>
+                <button
+                    id="nextBtn"
+                    class="button-secondary px-4 py-2 rounded shadow-md transition duration-300"
+                >
+                    Next Question
+                </button>
+                <button
+                    id="reviewBtn"
+                    class="button-tertiary px-4 py-2 rounded shadow-md transition duration-300"
+                >
+                    Review Answers
+                </button>
+                <button
+                    id="logoutBtn"
+                    class="button-danger text-white px-4 py-2 rounded shadow-md transition duration-300"
+                >
+                    Logout
+                </button>
+            </div>
+            <div id="question-container" class="question-box p-6 mb-4">
+                <!-- Question content will be dynamically inserted here -->
+            </div>
+            <button
+                id="showRationaleBtn"
+                class="button-secondary px-4 py-2 rounded shadow-md mt-4 hidden"
+            >
+                Show Rationale
+            </button>
+            <p id="rationale" class="mt-4 hidden"></p>
+        </div>
+    </body>
+</html>

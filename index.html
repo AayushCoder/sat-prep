@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAT Reading and Writing Question Bank</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            background: url('background.png');
+            margin-top: 1%;
+            background-size: cover;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            background-color: rgba(185, 230, 255, 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1100px;
+            backdrop-filter: blur(100px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before, .container::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, .2);
+            top: -150px;
+            left: -150px;
+            z-index: 0;
+        }
+
+        .container::after {
+            top: unset;
+            bottom: -150px;
+            left: unset;
+            right: -150px;
+        }
+
+        .container * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .left, .right {
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+        }
+
+        .left {
+            background: rgba(255, 255, 255, 0.5);
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .right {
+            background: rgba(255, 255, 255, 0.7);
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #4a4a4a;
+        }
+
+        .btn-signup {
+            background-color: lightskyblue;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: 500;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 300px;
+            align-self: center;
+        }
+
+        .btn-signup:hover {
+            background-color: #1565c0;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .google-icon {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .about h2 {
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #4a4a4a;
+        }
+
+        .about p {
+            font-size: 16px;
+            line-height: 2;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>Join SAT-PREP Today</h1> </n>
+            <h2>And Begin Practicing</h2>
+            <button id="signInButton" class="btn-signup">
+                <img src="google.png" 
+                     alt="Google icon" class="google-icon" width="20" height="20">
+                Sign Up with Google
+            </button>
+        </div>
+        <div class="right about">
+            <h2>Welcome to SAT-PREP</h2>
+            <br>
+                Provides questions derived from the Official CollegeBoard Question Bank - that are not provided in the official practice tests.<br><br>
+                This platform offers a vast collection of questions for the Reading and Writing section of the Digital SAT, designed to help you prepare effectively.</p>
+            <p>With a user-friendly interface and Google Sign-In integration, you can easily track your progress, review your answers, and improve your skills. Join us today and take a step closer to achieving your academic goals!</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDpOYp9ZCYImNMHBF_DL2IFCWq8z885Ris",
+            authDomain: "sat-prep-f77b1.firebaseapp.com",
+            projectId: "sat-prep-f77b1",
+            storageBucket: "sat-prep-f77b1.appspot.com",
+            messagingSenderId: "917298606983",
+            appId: "1:917298606983:web:2e1fb2605afdb380f91922",
+            measurementId: "G-NFNQJHQP32"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const provider = new GoogleAuthProvider();
+
+        const signInButton = document.getElementById("signInButton");
+
+        // Function to handle sign-in with Google
+        const userSignIn = () => {
+            signInWithPopup(auth, provider)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                window.location.href = 'questions.html';
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error(errorCode, errorMessage);
+            });
+        };
+
+        // Event listener for sign-in button
+        signInButton.addEventListener('click', userSignIn);
+    </script>
+</body>
+</html>

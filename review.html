@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="review.js" defer></script>
+    <style>
+        body {
+            background-size: cover;
+            background-color: rgb(217, 231, 255);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-6">
+        <div class="mb-4">
+            <label for="typeSelect" class="block text-gray-700 font-bold mb-2">Type:</label>
+            <select disabled id="typeSelect" class="block w-full border border-gray-300 rounded py-2 px-3" style="-webkit-appearance: none;">
+                <option value="Reading and Writing">Reading and Writing</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="difficultySelect" class="block text-gray-700 font-bold mb-2">Difficulty:</label>
+            <select id="difficultySelect" class="block w-full border border-gray-300 rounded py-2 px-3">
+                <option value="">All</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="domainSelect" class="block text-gray-700 font-bold mb-2">Domain:</label>
+            <select id="domainSelect" class="block w-full border border-gray-300 rounded py-2 px-3">
+                <option value="">All</option>
+                <option value="Information and Ideas">Information and Ideas</option>
+                <option value="Craft and Structure">Craft and Structure</option>
+                <option value="Expression of Ideas">Expression of Ideas</option>
+                <option value="Standard English Conventions">Standard English Conventions</option>
+            </select>
+        </div>
+        <div class="mb-4 flex space-x-4">
+            <button id="filterBtn" class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500">Filter</button>
+            <button id="resetBtn" class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500">Reset All Questions</button>
+            <button id="backToQuestionsBtn" class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-500">Back to Questions</button>
+            <button id="logoutBtn" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Logout</button>
+        </div>
+        <div id="questions-container" class="space-y-4"></div>
+    </div>
+</body>
+</html>

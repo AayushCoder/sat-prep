@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>SAT Practice Questions - Sign Up</title>
+		<script type="module" src="app.js"></script>
+		<link rel="stylesheet" href="style.css">
+</head>
+<body>
+		<div id="app">
+				<div id="signUpPage" class="auth-page">
+						<h2>Sign Up</h2>
+						<input type="email" id="signupEmail" placeholder="Email" />
+						<input type="password" id="signupPassword" placeholder="Password" />
+						<label for="passwordStrength">Password Strength:</label>
+						<input type="range" id="passwordStrength" min="1" max="5" value="3">
+						<button id="signupBtn">Sign Up</button>
+						<p id="signupError" class="error-message"></p>
+						<p>Already have an account? <a href="index.html">Login</a></p>
+				</div>
+		</div>
+</body>
+</html>
